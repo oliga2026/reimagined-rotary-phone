@@ -1,0 +1,257 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f6f4;
+  --panel: #ffffff;
+  --ink: #17211d;
+  --muted: #65736d;
+  --line: #dce4df;
+  --accent: #0f766e;
+  --accent-2: #b42318;
+  --soft: #e8f3ef;
+  --gold: #9a6b11;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  padding: 18px clamp(16px, 4vw, 44px);
+  background: rgba(244, 246, 244, 0.94);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(22px, 4vw, 34px);
+  letter-spacing: 0;
+}
+
+.status {
+  min-width: 106px;
+  color: var(--muted);
+  font-size: 13px;
+  text-align: right;
+}
+
+.layout {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+  padding: 16px clamp(12px, 3vw, 28px) 40px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0 16px;
+  overflow-x: auto;
+}
+
+.seg {
+  min-width: 72px;
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.seg.active {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: white;
+}
+
+.reports {
+  display: grid;
+  gap: 14px;
+}
+
+.match-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  overflow: hidden;
+}
+
+.match-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.competition,
+.kickoff {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.match-title {
+  margin: 2px 0 4px;
+  font-size: 23px;
+  letter-spacing: 0;
+}
+
+.pick {
+  align-self: start;
+  max-width: 132px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--accent);
+  font-weight: 800;
+  text-align: center;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--line);
+}
+
+.quick-grid div {
+  padding: 12px;
+  border-right: 1px solid var(--line);
+}
+
+.quick-grid div:last-child {
+  border-right: 0;
+}
+
+.quick-grid span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.quick-grid strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 18px;
+}
+
+details {
+  padding: 0 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+details:last-of-type {
+  border-bottom: 0;
+}
+
+summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+ul {
+  margin: 0 0 16px;
+  padding-left: 18px;
+}
+
+li + li {
+  margin-top: 8px;
+}
+
+details p {
+  margin: 0 0 16px;
+}
+
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 18px 18px;
+  background: #fafbf9;
+}
+
+.sources a {
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.empty-state {
+  padding: 32px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  text-align: center;
+}
+
+.empty-state h2 {
+  margin: 0 0 6px;
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 680px) {
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .status {
+    text-align: left;
+  }
+
+  .match-head {
+    grid-template-columns: 1fr;
+  }
+
+  .pick {
+    max-width: none;
+    width: 100%;
+  }
+
+  .quick-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quick-grid div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .quick-grid div:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+}

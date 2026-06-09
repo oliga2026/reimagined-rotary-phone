@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>世界杯赛前盘口情报</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">2026 FIFA World Cup</p>
+        <h1>世界杯赛前盘口情报</h1>
+      </div>
+      <div class="status" id="updatedAt">读取中</div>
+    </header>
+
+    <main class="layout">
+      <section class="toolbar" aria-label="筛选">
+        <button class="seg active" data-filter="all" type="button">全部</button>
+        <button class="seg" data-filter="today" type="button">今日</button>
+        <button class="seg" data-filter="tomorrow" type="button">明日</button>
+      </section>
+
+      <section id="reports" class="reports" aria-live="polite"></section>
+      <section id="emptyState" class="empty-state" hidden>
+        <h2>暂无赛前报告</h2>
+        <p>自动任务每天 18:00 更新未来约 36 小时内的比赛。</p>
+      </section>
+    </main>
+
+    <template id="reportTemplate">
+      <article class="match-card">
+        <div class="match-head">
+          <div>
+            <p class="competition"></p>
+            <h2 class="match-title"></h2>
+            <p class="kickoff"></p>
+          </div>
+          <div class="pick"></div>
+        </div>
+
+        <div class="quick-grid">
+          <div><span>主胜</span><strong class="home-win"></strong></div>
+          <div><span>平局</span><strong class="draw"></strong></div>
+          <div><span>客胜</span><strong class="away-win"></strong></div>
+          <div><span>比分</span><strong class="score"></strong></div>
+        </div>
+
+        <details open>
+          <summary>赛前情报快照</summary>
+          <ul class="snapshot"></ul>
+        </details>
+
+        <details>
+          <summary>新闻</summary>
+          <ul class="news"></ul>
+        </details>
+
+        <details open>
+          <summary>盘口解读</summary>
+          <p class="market"></p>
+        </details>
+
+        <details>
+          <summary>影响因素</summary>
+          <ul class="factors"></ul>
+        </details>
+
+        <details>
+          <summary>投注风险提示</summary>
+          <p class="risk"></p>
+        </details>
+
+        <footer class="sources"></footer>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
