@@ -23,6 +23,16 @@ const fallbackReports = {
         "南非核心门将 Ronwen Williams 具备拖住比分的能力。"
       ],
       marketRead: "参考皇冠亚洲盘分析法：墨西哥 -0.75 可接受，-1 偏谨慎，升至 -1.25 后不建议追热。大小球若在 2.25/2.5，低比分方向更符合模型。",
+      marketMovement: "重点观察临场是否从 -0.75 升到 -1 或 -1.25，以及主队水位是否持续下降。若升盘但水位不稳，可能是热度推动而非真实优势扩大。",
+      lineup: [
+        "墨西哥：重点核对首发门将、Edson Alvarez 状态、Raul Jimenez 是否首发。",
+        "南非：重点核对 Ronwen Williams、Lyle Foster 以及主力中卫组合。"
+      ],
+      formData: [
+        "墨西哥近期热身赛进攻效率较好，但防线早段注意力仍需观察。",
+        "南非更依赖低位防守和定位球，若先失球，追分能力是疑问。"
+      ],
+      modelNote: "模型倾向墨西哥小胜。若盘口停在 -0.75，墨西哥方向价值较好；若升到 -1.25，胜率提升但盘口性价比下降。",
       factors: [
         "海拔：墨西哥城约 2200 米，高原环境偏向主队。",
         "赛程：揭幕战通常节奏谨慎，强队早段试探时间更长。",
@@ -114,7 +124,11 @@ function render(reports) {
     node.querySelector(".snapshot").innerHTML = textList(report.snapshot);
     node.querySelector(".news").innerHTML = textList(report.news);
     node.querySelector(".market").textContent = report.marketRead || "暂无盘口解读。";
+    node.querySelector(".market-movement").textContent = report.marketMovement || "暂无盘口变化数据。";
+    node.querySelector(".lineup").innerHTML = textList(report.lineup);
+    node.querySelector(".form-data").innerHTML = textList(report.formData);
     node.querySelector(".factors").innerHTML = textList(report.factors);
+    node.querySelector(".model-note").textContent = report.modelNote || "暂无模型判断。";
     node.querySelector(".risk").textContent = report.risk || "暂无风险提示。";
 
     const sourceHtml = (report.sources || [])
