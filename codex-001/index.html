@@ -1,31 +1,53 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>世界杯赛前盘口情报</title>
+    <title>World Cup Pre-Match Intelligence</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header class="topbar">
-      <div>
+      <div class="hero-copy">
         <p class="eyebrow">2026 FIFA World Cup</p>
-        <h1>世界杯赛前盘口情报</h1>
+        <h1>Pre-match Intelligence Board</h1>
+        <p class="hero-note">
+          Built for handicap reading first: lineups, market heat, xG quality, set pieces,
+          referee style, weather, and travel recovery in one place.
+        </p>
       </div>
-      <div class="status" id="updatedAt">读取中</div>
+      <div class="status-block">
+        <div class="status" id="updatedAt">Loading update...</div>
+        <div class="status-sub">Window: next 36 hours</div>
+      </div>
     </header>
 
     <main class="layout">
-      <section class="toolbar" aria-label="筛选">
-        <button class="seg active" data-filter="all" type="button">全部</button>
-        <button class="seg" data-filter="today" type="button">今日</button>
-        <button class="seg" data-filter="tomorrow" type="button">明日</button>
+      <section class="toolbar" aria-label="Filter reports">
+        <button class="seg active" data-filter="all" type="button">All</button>
+        <button class="seg" data-filter="today" type="button">Today</button>
+        <button class="seg" data-filter="tomorrow" type="button">Tomorrow</button>
+      </section>
+
+      <section class="legend">
+        <div class="legend-card">
+          <strong>Late lineup signal</strong>
+          <span>Goalkeeper, CB pair, holding midfielder, striker</span>
+        </div>
+        <div class="legend-card">
+          <strong>Market sanity check</strong>
+          <span>Asian line, water, totals, 1X2 moving together or not</span>
+        </div>
+        <div class="legend-card">
+          <strong>Score drivers</strong>
+          <span>xG quality, set pieces, referee, weather, travel load</span>
+        </div>
       </section>
 
       <section id="reports" class="reports" aria-live="polite"></section>
       <section id="emptyState" class="empty-state" hidden>
-        <h2>暂无赛前报告</h2>
-        <p>自动任务每天 18:00 更新未来约 36 小时内的比赛。</p>
+        <h2>No upcoming match reports</h2>
+        <p>The report feed refreshes for matches scheduled in the next 36 hours.</p>
       </section>
     </main>
 
@@ -41,58 +63,69 @@
         </div>
 
         <div class="quick-grid">
-          <div><span>主胜</span><strong class="home-win"></strong></div>
-          <div><span>平局</span><strong class="draw"></strong></div>
-          <div><span>客胜</span><strong class="away-win"></strong></div>
-          <div><span>比分</span><strong class="score"></strong></div>
+          <div><span>Home</span><strong class="home-win"></strong></div>
+          <div><span>Draw</span><strong class="draw"></strong></div>
+          <div><span>Away</span><strong class="away-win"></strong></div>
+          <div><span>Scores</span><strong class="score"></strong></div>
         </div>
 
+        <section class="signal-panel">
+          <div class="section-head">
+            <h3>Advanced Signals</h3>
+            <p>Extra edges that matter most for result and score prediction.</p>
+          </div>
+          <div class="signal-grid"></div>
+        </section>
+
         <details open>
-          <summary>赛前情报快照</summary>
+          <summary>Snapshot</summary>
           <ul class="snapshot"></ul>
         </details>
 
         <details>
-          <summary>新闻</summary>
+          <summary>News and availability</summary>
           <ul class="news"></ul>
         </details>
 
         <details open>
-          <summary>盘口解读</summary>
+          <summary>Market read</summary>
           <p class="market"></p>
         </details>
 
         <details open>
-          <summary>盘口变化与市场热度</summary>
+          <summary>Market movement and public heat</summary>
           <p class="market-movement"></p>
         </details>
 
         <details>
-          <summary>阵容与伤停</summary>
+          <summary>Lineups and injuries</summary>
           <ul class="lineup"></ul>
         </details>
 
         <details>
-          <summary>近期状态与数据</summary>
+          <summary>Recent form and data</summary>
           <ul class="form-data"></ul>
         </details>
 
         <details>
-          <summary>影响因素</summary>
+          <summary>External factors</summary>
           <ul class="factors"></ul>
         </details>
 
         <details>
-          <summary>模型判断</summary>
+          <summary>Model note</summary>
           <p class="model-note"></p>
         </details>
 
         <details>
-          <summary>投注风险提示</summary>
+          <summary>Betting risk</summary>
           <p class="risk"></p>
         </details>
 
-        <footer class="sources"></footer>
+        <footer class="sources-wrap">
+          <div class="sources-title">Sources</div>
+          <div class="sources"></div>
+        </footer>
       </article>
     </template>
 
